@@ -7,4 +7,5 @@
     <string name="edit_char">字符</string>
     <string name="edit_ascii">ASCII码</string>
     <string name="message_char">", 字符: "</string>
+    <string name="button_show">历史记录</string>
 </resources>
