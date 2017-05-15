@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">字符编码</string>
+    <string name="button_send">转换成ASCII码</string>
+    <string name="edit_message">输入一条消息</string>
+    <string name="button_toChar">转换成字符</string>
+    <string name="edit_char">字符</string>
+    <string name="edit_ascii">ASCII码</string>
+    <string name="message_char">", 字符: "</string>
+</resources>
