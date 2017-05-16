@@ -9,12 +9,17 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
+    private HistoryDataSource dataSource;
+
     EditText charEditText, asciiEditText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        dataSource = new HistoryDataSource(this);
+        dataSource.open();
 
         charEditText = (EditText) findViewById(R.id.charEditText);
         asciiEditText = (EditText) findViewById(R.id.asciiEditText);
@@ -44,11 +49,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void convertToChar(View view) {
+        History history;
         if (asciiEditText.getText().toString().length() > 0) {
             int ascii = Integer.parseInt(asciiEditText.getText().toString());
             char ch = (char) ascii;
             charEditText.setText(Character.toString(ch));
             charEditText.clearFocus();
+            history = dataSource.insertHistory(ascii, Character.toString(ch));
+            Toast.makeText(this, history.getCh(), Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(this, R.string.empty_ascii, Toast.LENGTH_SHORT).show();
         }
