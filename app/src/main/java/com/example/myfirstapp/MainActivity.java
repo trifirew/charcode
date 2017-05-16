@@ -37,7 +37,8 @@ public class MainActivity extends AppCompatActivity {
             char ch = charEditText.getText().toString().charAt(0);
             int ascii = (int) ch;
             asciiEditText.setText(Integer.toString(ascii));
-            asciiEditText.clearFocus();
+            asciiEditText.requestFocus();
+            asciiEditText.selectAll();
         } else {
             Toast.makeText(this, R.string.empty_char, Toast.LENGTH_SHORT).show();
         }
@@ -48,7 +49,8 @@ public class MainActivity extends AppCompatActivity {
             int ascii = Integer.parseInt(asciiEditText.getText().toString());
             char ch = (char) ascii;
             charEditText.setText(Character.toString(ch));
-            charEditText.clearFocus();
+            charEditText.requestFocus();
+            charEditText.selectAll();
         } else {
             Toast.makeText(this, R.string.empty_ascii, Toast.LENGTH_SHORT).show();
         }
