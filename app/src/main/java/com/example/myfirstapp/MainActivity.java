@@ -42,21 +42,22 @@ public class MainActivity extends AppCompatActivity {
             char ch = charEditText.getText().toString().charAt(0);
             int ascii = (int) ch;
             asciiEditText.setText(Integer.toString(ascii));
-            asciiEditText.clearFocus();
+            asciiEditText.requestFocus();
+            asciiEditText.selectAll();
         } else {
             Toast.makeText(this, R.string.empty_char, Toast.LENGTH_SHORT).show();
         }
     }
 
     public void convertToChar(View view) {
-        History history;
         if (asciiEditText.getText().toString().length() > 0) {
             int ascii = Integer.parseInt(asciiEditText.getText().toString());
             char ch = (char) ascii;
+            History history = dataSource.insertHistory(ascii, Character.toString(ch));
+
             charEditText.setText(Character.toString(ch));
-            charEditText.clearFocus();
-            history = dataSource.insertHistory(ascii, Character.toString(ch));
-            Toast.makeText(this, history.getCh(), Toast.LENGTH_SHORT).show();
+            charEditText.requestFocus();
+            charEditText.selectAll();
         } else {
             Toast.makeText(this, R.string.empty_ascii, Toast.LENGTH_SHORT).show();
         }
