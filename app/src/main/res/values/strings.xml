@@ -7,7 +7,7 @@
     <string name="edit_ascii">ASCII code</string>
     <string name="empty_ascii">Empty ASCII code</string>
     <string name="empty_char">Empty character</string>
-    <string name="button_show">Show on another page</string>
+    <string name="button_show">Show history</string>
     <string name="message_char">", Character:  "</string>
     <string name="message_ascii" translatable="false">"ASCII: "</string>
 </resources>
