@@ -3,6 +3,7 @@ package com.example.myfirstapp;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -19,6 +20,7 @@ public class DisplayMessageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_message);
+        setTitle(R.string.history);
 
         dataSource = new HistoryDataSource(this);
         dataSource.open();
@@ -32,7 +34,7 @@ public class DisplayMessageActivity extends AppCompatActivity {
             ArrayAdapter<History> adapter = new ArrayAdapter<History>(this, android.R.layout.simple_list_item_1, values);
             listView.setAdapter(adapter);
         } else {
-            textView.setText("No history");
+            textView.setText(R.string.no_history);
         }
 
         // Get the Intent that started this activity and extract the string
@@ -44,9 +46,10 @@ public class DisplayMessageActivity extends AppCompatActivity {
 
         // Capture the layout's TextView and set the string as its text
         if (myAscii.length() != 0) {
+            textView.setVisibility(View.VISIBLE);
             textView.setText(getString(R.string.message_ascii) + myAscii + getString(R.string.message_char) + myChar);
         } else {
-            textView.setText(R.string.history);
+            textView.setVisibility(View.GONE);
         }
     }
 

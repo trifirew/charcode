@@ -23,6 +23,7 @@ public class HistoryDataSource {
             HistoryContract.HistoryEntry.COLUMN_NAME_ASCII,
             HistoryContract.HistoryEntry.COLUMN_NAME_CHARACTER
     };
+    private final String DESC = HistoryContract.HistoryEntry._ID + " DESC";
 
     public HistoryDataSource(Context context) {
         dbHelper = new HistoryDbHelper(context);
@@ -74,7 +75,7 @@ public class HistoryDataSource {
         Cursor cursor = database.query(
                 HistoryContract.HistoryEntry.TABLE_NAME,
                 allColumns,
-                null, null, null, null, null
+                null, null, HistoryContract.HistoryEntry.COLUMN_NAME_ASCII, null, DESC
                 );
 
         cursor.moveToFirst();
