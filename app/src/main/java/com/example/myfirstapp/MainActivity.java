@@ -20,7 +20,6 @@ public class MainActivity extends AppCompatActivity {
 
         dataSource = new HistoryDataSource(this);
         dataSource.open();
-        Toast.makeText(this, "onCreate, database opened", Toast.LENGTH_SHORT).show();
 
         charEditText = (EditText) findViewById(R.id.charEditText);
         asciiEditText = (EditText) findViewById(R.id.asciiEditText);
@@ -42,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
         if (charEditText.getText().toString().length() > 0) {
             char ch = charEditText.getText().toString().charAt(0);
             int ascii = (int) ch;
+            History history = dataSource.insertHistory(ascii, Character.toString(ch));
+
             asciiEditText.setText(Integer.toString(ascii));
             asciiEditText.requestFocus();
             asciiEditText.selectAll();
@@ -56,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
             char ch = (char) ascii;
             History history = dataSource.insertHistory(ascii, Character.toString(ch));
 
-            charEditText.setText(Character.toString(ch));
+            charEditText.setText(history.getCh());
             charEditText.requestFocus();
             charEditText.selectAll();
         } else {
@@ -66,14 +67,12 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onPause() {
-        Toast.makeText(this, "onPause, database closed", Toast.LENGTH_SHORT).show();
         dataSource.close();
         super.onPause();
     }
 
     @Override
     protected void onResume() {
-        Toast.makeText(this, "onResume, database opened", Toast.LENGTH_SHORT).show();
         dataSource.open();
         super.onResume();
     }

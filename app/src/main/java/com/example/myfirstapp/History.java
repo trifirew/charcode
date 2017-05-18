@@ -32,4 +32,9 @@ public class History {
     public void setCh(String ch) {
         this.ch = ch;
     }
+
+    @Override
+    public String toString() {
+        return Integer.toString(ascii) + ": " + ch;
+    }
 }

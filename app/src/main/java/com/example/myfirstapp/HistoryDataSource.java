@@ -6,6 +6,9 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Qishen Wu on 2017-05-16.
  */
@@ -63,6 +66,25 @@ public class HistoryDataSource {
         History history = cursorToHistory(cursor);
         cursor.close();
         return history;
+    }
+
+    public List<History> getAllHistory() {
+        List<History> allHistory = new ArrayList<History>();
+
+        Cursor cursor = database.query(
+                HistoryContract.HistoryEntry.TABLE_NAME,
+                allColumns,
+                null, null, null, null, null
+                );
+
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            History history = cursorToHistory(cursor);
+            allHistory.add(history);
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return allHistory;
     }
 
     private History cursorToHistory(Cursor cursor) {

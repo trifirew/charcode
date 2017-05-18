@@ -8,4 +8,6 @@
     <string name="edit_ascii">ASCII码</string>
     <string name="message_char">", 字符: "</string>
     <string name="button_show">历史记录</string>
+    <string name="no_history">没有历史记录</string>
+    <string name="history">历史记录</string>
 </resources>
