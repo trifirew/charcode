@@ -49,7 +49,8 @@ public class DisplayMessageActivity extends AppCompatActivity {
     }
 
     public void showDetail(View view) {
-        Toast.makeText(this, "Clicked", Toast.LENGTH_SHORT).show();
+        CharCode charCode = (CharCode) view.getTag();
+        Toast.makeText(this, charCode.getHexUnicodeStr(), Toast.LENGTH_SHORT).show();
 //        Intent intent = new Intent(this, DisplayMessageActivity.class);
 //        Bundle bundle = new Bundle();
 //        String myChar = charEditText.getText().toString();

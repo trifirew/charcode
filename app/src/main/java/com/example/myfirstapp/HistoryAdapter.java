@@ -48,6 +48,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.MyViewHo
         Log.e(TAG, "set value");
         holder.asciiTextView.setText(historyList.get(position).getDecUnicodeStr());
         holder.charTextView.setText(historyList.get(position).getCharStr());
+        holder.cv.setTag(historyList.get(position));
     }
 
     @Override
