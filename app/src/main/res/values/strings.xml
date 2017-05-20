@@ -1,16 +1,13 @@
 <resources>
     <string name="app_name">CharCode</string>
-    <string name="edit_message">Enter a message</string>
     <string name="button_send">To Unicode</string>
     <string name="button_toChar">To character</string>
     <string name="edit_char">Character</string>
     <string name="empty_ascii">Please enter a Unicode</string>
     <string name="empty_char">Empty character</string>
-    <string name="button_show">Show history</string>
-    <string name="message_char">", Character:  "</string>
-    <string name="message_ascii" translatable="false">\"Unicode: \"</string>
-    <string name="no_history">No history</string>
-    <string name="history">History</string>
     <string name="edit_hex_unicode">Hexadecimal Unicode</string>
     <string name="edit_unicode">Decimal Unicode</string>
+    <string name="copy_char">Copy character</string>
+    <string name="copy_dec_unicode">Copy dec unicode</string>
+    <string name="copy_hex_unicode">Copy hex unicode</string>
 </resources>

@@ -1,7 +1,8 @@
-package com.example.myfirstapp;
+package pw.wuqs.app.charcode;
 
 /**
- * Created by Qishen Wu on 2017-05-19.
+ * CharCode class
+ * Class of a search item
  */
 
 public class CharCode {
@@ -45,5 +46,10 @@ public class CharCode {
 
     public String getCharStr() {
         return charStr;
+    }
+
+    public String[] toStringArray() {
+        String[] strings = {charStr, decUnicodeStr, hexUnicodeStr};
+        return strings;
     }
 }

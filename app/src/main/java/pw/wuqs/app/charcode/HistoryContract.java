@@ -1,4 +1,4 @@
-package com.example.myfirstapp;
+package pw.wuqs.app.charcode;
 
 import android.provider.BaseColumns;
 
@@ -6,7 +6,7 @@ import android.provider.BaseColumns;
  * Created by Qishen Wu on 2017-05-16.
  */
 
-public class HistoryContract {
+class HistoryContract {
     private HistoryContract() {}
 
     /* Inner class that defines the table contents */

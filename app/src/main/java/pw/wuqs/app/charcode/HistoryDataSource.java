@@ -1,4 +1,4 @@
-package com.example.myfirstapp;
+package pw.wuqs.app.charcode;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -13,7 +13,7 @@ import java.util.List;
  * Created by Qishen Wu on 2017-05-16.
  */
 
-public class HistoryDataSource {
+class HistoryDataSource {
 
     // Database fields
     private SQLiteDatabase database;
@@ -68,7 +68,7 @@ public class HistoryDataSource {
     }
 
     public List<CharCode> getAllHistory() {
-        List<CharCode> allHistory = new ArrayList<CharCode>();
+        List<CharCode> allHistory = new ArrayList<>();
 
         Cursor cursor = database.query(
                 HistoryContract.HistoryEntry.TABLE_NAME,

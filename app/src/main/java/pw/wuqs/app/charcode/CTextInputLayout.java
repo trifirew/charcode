@@ -1,4 +1,4 @@
-package com.example.myfirstapp;
+package pw.wuqs.app.charcode;
 
 import android.content.Context;
 import android.support.design.widget.TextInputLayout;
@@ -6,7 +6,7 @@ import android.util.AttributeSet;
 import android.widget.EditText;
 
 /**
- * Created by Qishen Wu on 2017/5/19.
+ * Custom TextInputLayout with baseline support
  */
 
 public class CTextInputLayout extends TextInputLayout {

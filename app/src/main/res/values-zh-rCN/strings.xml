@@ -2,15 +2,13 @@
 <resources>
     <string name="app_name">字符编码</string>
     <string name="button_send">转换成ASCII码</string>
-    <string name="edit_message">输入一条消息</string>
     <string name="button_toChar">转换成字符</string>
     <string name="edit_char">字符</string>
-    <string name="message_char">", 字符: "</string>
-    <string name="button_show">历史记录</string>
-    <string name="no_history">没有历史记录</string>
-    <string name="history">历史记录</string>
-    <string name="empty_ascii">请输入Unicode编码</string>
+    <string name="empty_ascii">请输入 Unicode 编码</string>
     <string name="empty_char">请输入字符</string>
     <string name="edit_hex_unicode">十六进制 Unicode</string>
     <string name="edit_unicode">十进制 Unicode</string>
+    <string name="copy_char">复制字符</string>
+    <string name="copy_dec_unicode">复制十进制 Unicode</string>
+    <string name="copy_hex_unicode">复制十六进制 Unicode</string>
 </resources>

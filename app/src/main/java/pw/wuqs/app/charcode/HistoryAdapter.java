@@ -1,4 +1,4 @@
-package com.example.myfirstapp;
+package pw.wuqs.app.charcode;
 
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -39,8 +39,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.MyViewHo
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.history_item_view, parent, false);
 
-        MyViewHolder mvh = new MyViewHolder(v);
-        return mvh;
+        return new MyViewHolder(v);
     }
 
     @Override

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:focusable="true"
     android:focusableInTouchMode="true"
-    tools:context="com.example.myfirstapp.MainActivity"
+    tools:context=".MainActivity"
     tools:layout_editor_absoluteX="0dp"
     tools:layout_editor_absoluteY="81dp">
 
@@ -19,8 +19,6 @@
         android:text="@string/button_send"
         android:layout_marginStart="16dp"
         app:layout_constraintLeft_toRightOf="@+id/charTextInput"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBaseline_toBaselineOf="@+id/charTextInput"
         app:layout_constraintHorizontal_bias="1.0" />
@@ -30,31 +28,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
         android:onClick="convert"
         android:text="@string/button_toChar"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toRightOf="@+id/asciiTextInput"
-        android:layout_marginLeft="0dp"
+        android:layout_marginStart="16dp"
         app:layout_constraintBaseline_toBaselineOf="@+id/asciiTextInput" />
 
-    <Button
-        android:id="@+id/button"
-        style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:onClick="sendMessage"
-        android:text="@string/button_show"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
-
-    <com.example.myfirstapp.CTextInputLayout
+    <pw.wuqs.app.charcode.CTextInputLayout
         android:id="@+id/charTextInput"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         app:layout_constraintHorizontal_chainStyle="spread_inside"
@@ -69,18 +53,18 @@
             android:hint="@string/edit_char"
             android:imeOptions="actionGo"
             android:inputType="textNoSuggestions"
-            android:maxLength="1" />
-    </com.example.myfirstapp.CTextInputLayout>
+            android:maxLength="1"
+            android:selectAllOnFocus="true" />
+    </pw.wuqs.app.charcode.CTextInputLayout>
 
-    <com.example.myfirstapp.CTextInputLayout
+    <pw.wuqs.app.charcode.CTextInputLayout
         android:id="@+id/asciiTextInput"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
         android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/toCharButton"
+        app:layout_constraintRight_toLeftOf="@+id/toCharButton"
         app:layout_constraintTop_toBottomOf="@+id/charTextInput">
 
         <EditText
@@ -89,6 +73,25 @@
             android:layout_height="wrap_content"
             android:hint="@string/edit_unicode"
             android:imeOptions="actionGo"
-            android:inputType="number" />
-    </com.example.myfirstapp.CTextInputLayout>
+            android:inputType="number"
+            android:selectAllOnFocus="true" />
+    </pw.wuqs.app.charcode.CTextInputLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/mainRecyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginTop="16dp"
+        android:clipToPadding="false"
+        android:paddingBottom="2dp"
+        android:paddingEnd="8dp"
+        android:paddingStart="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/asciiTextInput" />
 </android.support.constraint.ConstraintLayout>
