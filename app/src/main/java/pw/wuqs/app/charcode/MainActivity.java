@@ -105,13 +105,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void showDetail(View view) {
         CharCode charCode = (CharCode) view.getTag();
-//        FragmentManager fm = getFragmentManager();
-//        DialogFragment dialog = new DetailDialogFragment();
-//        Bundle args = new Bundle();
-//        args.putStringArray(CHARCODE_KEY, charCode.toStringArray());
-//        dialog.setArguments(args);
-//        dialog.show(fm, "1");
-
         Intent intent = new Intent(this, DetailActivity.class);
         intent.putExtra(CHARCODE_KEY, charCode.getUnicode());
         startActivity(intent);
