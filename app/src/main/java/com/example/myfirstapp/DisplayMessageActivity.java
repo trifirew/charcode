@@ -3,7 +3,10 @@ package com.example.myfirstapp;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -14,7 +17,9 @@ import java.util.List;
 public class DisplayMessageActivity extends AppCompatActivity {
 
     private HistoryDataSource dataSource;
-    private ListView listView;
+    private RecyclerView mRecyclerView;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager mLayoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,33 +29,35 @@ public class DisplayMessageActivity extends AppCompatActivity {
 
         dataSource = new HistoryDataSource(this);
         dataSource.open();
+        List<CharCode> values = dataSource.getAllHistory();
 
-        TextView textView = (TextView) findViewById(R.id.textView);
+        mRecyclerView = (RecyclerView) findViewById(R.id.historyRecyclerView);
 
-        listView = (ListView) findViewById(R.id.historyListView);
-        List<History> values = dataSource.getAllHistory();
+        mLayoutManager = new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(mLayoutManager);
 
-        if (values.size() != 0) {
-            ArrayAdapter<History> adapter = new ArrayAdapter<History>(this, android.R.layout.simple_list_item_1, values);
-            listView.setAdapter(adapter);
-        } else {
-            textView.setText(R.string.no_history);
-        }
+        // Specify an adapter
+        mAdapter = new HistoryAdapter(values);
+        mRecyclerView.setAdapter(mAdapter);
+
 
         // Get the Intent that started this activity and extract the string
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         String myAscii = bundle.getString("ASCII");
         String myChar = bundle.getString("CHAR");
+    }
 
-
-        // Capture the layout's TextView and set the string as its text
-        if (myAscii.length() != 0) {
-            textView.setVisibility(View.VISIBLE);
-            textView.setText(getString(R.string.message_ascii) + myAscii + getString(R.string.message_char) + myChar);
-        } else {
-            textView.setVisibility(View.GONE);
-        }
+    public void showDetail(View view) {
+        Toast.makeText(this, "Clicked", Toast.LENGTH_SHORT).show();
+//        Intent intent = new Intent(this, DisplayMessageActivity.class);
+//        Bundle bundle = new Bundle();
+//        String myChar = charEditText.getText().toString();
+//        String myAscii = asciiEditText.getText().toString();
+//        bundle.putString("CHAR", myChar);
+//        bundle.putString("ASCII", myAscii);
+//        intent.putExtras(bundle);
+//        startActivity(intent);
     }
 
     @Override

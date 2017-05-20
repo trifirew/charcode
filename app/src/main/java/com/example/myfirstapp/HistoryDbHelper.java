@@ -16,8 +16,7 @@ public class HistoryDbHelper extends SQLiteOpenHelper {
     private static final String SQL_CREATE_TABLE =
             "CREATE TABLE " + HistoryContract.HistoryEntry.TABLE_NAME + " (" +
                     HistoryContract.HistoryEntry._ID + " INTEGER PRIMARY KEY," +
-                    HistoryContract.HistoryEntry.COLUMN_NAME_ASCII + " INTEGER," +
-                    HistoryContract.HistoryEntry.COLUMN_NAME_CHARACTER + " TEXT)";
+                    HistoryContract.HistoryEntry.COLUMN_NAME_ASCII + " INTEGER)";
 
     private static final String SQL_DELETE_TABLE =
             "DROP TABLE IF EXISTS " + HistoryContract.HistoryEntry.TABLE_NAME;
