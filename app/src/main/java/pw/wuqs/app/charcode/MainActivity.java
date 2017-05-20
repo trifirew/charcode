@@ -2,6 +2,7 @@ package pw.wuqs.app.charcode;
 
 import android.app.DialogFragment;
 import android.app.FragmentManager;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -82,7 +83,12 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(this, R.string.empty_ascii, Toast.LENGTH_SHORT).show();
                 return;
             }
-            CharCode charCode = new CharCode(Integer.parseInt(asciiEditText.getText().toString()));
+            String uniStr = asciiEditText.getText().toString();
+            if (!isParsable(uniStr)) {
+                Toast.makeText(this, R.string.invalid_unicode, Toast.LENGTH_SHORT).show();
+                return;
+            }
+            CharCode charCode = new CharCode(Integer.parseInt(uniStr));
             asciiEditText.clearFocus();
             charEditText.setText(charCode.getCharStr());
             dataSource.insertHistory(charCode);
@@ -99,12 +105,16 @@ public class MainActivity extends AppCompatActivity {
 
     public void showDetail(View view) {
         CharCode charCode = (CharCode) view.getTag();
-        FragmentManager fm = getFragmentManager();
-        DialogFragment dialog = new DetailDialogFragment();
-        Bundle args = new Bundle();
-        args.putStringArray(CHARCODE_KEY, charCode.toStringArray());
-        dialog.setArguments(args);
-        dialog.show(fm, "1");
+//        FragmentManager fm = getFragmentManager();
+//        DialogFragment dialog = new DetailDialogFragment();
+//        Bundle args = new Bundle();
+//        args.putStringArray(CHARCODE_KEY, charCode.toStringArray());
+//        dialog.setArguments(args);
+//        dialog.show(fm, "1");
+
+        Intent intent = new Intent(this, DetailActivity.class);
+        intent.putExtra(CHARCODE_KEY, charCode.getUnicode());
+        startActivity(intent);
     }
 
     @Override
@@ -117,5 +127,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         dataSource.open();
         super.onResume();
+    }
+
+    private boolean isParsable(String input){
+        boolean parsable = true;
+        try{
+            Integer.parseInt(input);
+        }catch(NumberFormatException e){
+            parsable = false;
+        }
+        return parsable;
     }
 }
