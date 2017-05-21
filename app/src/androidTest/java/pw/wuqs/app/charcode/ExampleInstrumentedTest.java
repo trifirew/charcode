@@ -1,4 +1,4 @@
-package com.example.myfirstapp;
+package pw.wuqs.app.charcode;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

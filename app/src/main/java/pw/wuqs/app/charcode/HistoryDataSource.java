@@ -1,4 +1,4 @@
-package com.example.myfirstapp;
+package pw.wuqs.app.charcode;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -13,7 +13,7 @@ import java.util.List;
  * Created by Qishen Wu on 2017-05-16.
  */
 
-public class HistoryDataSource {
+class HistoryDataSource {
 
     // Database fields
     private SQLiteDatabase database;
@@ -21,7 +21,6 @@ public class HistoryDataSource {
     private String[] allColumns = {
             HistoryContract.HistoryEntry._ID,
             HistoryContract.HistoryEntry.COLUMN_NAME_ASCII,
-            HistoryContract.HistoryEntry.COLUMN_NAME_CHARACTER
     };
     private final String DESC = HistoryContract.HistoryEntry._ID + " DESC";
 
@@ -37,10 +36,9 @@ public class HistoryDataSource {
         dbHelper.close();
     }
 
-    public History insertHistory(int ascii, String ch) {
+    public CharCode insertHistory(CharCode charCode) {
         ContentValues values = new ContentValues();
-        values.put(HistoryContract.HistoryEntry.COLUMN_NAME_ASCII, ascii);
-        values.put(HistoryContract.HistoryEntry.COLUMN_NAME_CHARACTER, ch);
+        values.put(HistoryContract.HistoryEntry.COLUMN_NAME_ASCII, charCode.getUnicode());
 
         // Insert the new row, returning the primary key value of the new row
         long newRowId = database.insert(HistoryContract.HistoryEntry.TABLE_NAME, null, values);
@@ -51,12 +49,12 @@ public class HistoryDataSource {
                 null, null, null, null
         );
         cursor.moveToFirst();
-        History history = cursorToHistory(cursor);
+        CharCode history = cursorToCharCode(cursor);
         cursor.close();
         return history;
     }
 
-    public History getHistoryById(long id) {
+    public CharCode getHistoryById(long id) {
         Cursor cursor = database.query(
                 HistoryContract.HistoryEntry.TABLE_NAME,
                 allColumns,
@@ -64,13 +62,13 @@ public class HistoryDataSource {
                 null, null, null, null
         );
         cursor.moveToFirst();
-        History history = cursorToHistory(cursor);
+        CharCode charCode = cursorToCharCode(cursor);
         cursor.close();
-        return history;
+        return charCode;
     }
 
-    public List<History> getAllHistory() {
-        List<History> allHistory = new ArrayList<History>();
+    public List<CharCode> getAllHistory() {
+        List<CharCode> allHistory = new ArrayList<>();
 
         Cursor cursor = database.query(
                 HistoryContract.HistoryEntry.TABLE_NAME,
@@ -80,19 +78,15 @@ public class HistoryDataSource {
 
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
-            History history = cursorToHistory(cursor);
-            allHistory.add(history);
+            CharCode charCode = cursorToCharCode(cursor);
+            allHistory.add(charCode);
             cursor.moveToNext();
         }
         cursor.close();
         return allHistory;
     }
 
-    private History cursorToHistory(Cursor cursor) {
-        History history = new History();
-        history.setId(cursor.getLong(0));
-        history.setAscii(cursor.getInt(1));
-        history.setCh(cursor.getString(2));
-        return history;
+    private CharCode cursorToCharCode(Cursor cursor) {
+        return new CharCode(cursor.getInt(1));
     }
 }

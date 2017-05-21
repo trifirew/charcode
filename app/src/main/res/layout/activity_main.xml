@@ -6,80 +6,93 @@
     android:layout_height="match_parent"
     android:focusable="true"
     android:focusableInTouchMode="true"
-    tools:context="com.example.myfirstapp.MainActivity"
+    tools:context=".MainActivity"
     tools:layout_editor_absoluteX="0dp"
     tools:layout_editor_absoluteY="81dp">
-
-    <EditText
-        android:id="@+id/charEditText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:hint="@string/edit_char"
-        android:inputType="textPersonName"
-        android:maxLength="1"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/toAsciiButton"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/toAsciiButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginStart="16dp"
-        android:onClick="convertToAscii"
+        android:onClick="convert"
         android:text="@string/button_send"
-        app:layout_constraintBaseline_toBaselineOf="@+id/charEditText"
-        app:layout_constraintLeft_toRightOf="@+id/charEditText"
-        app:layout_constraintRight_toRightOf="parent" />
-
-    <EditText
-        android:id="@+id/asciiEditText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:hint="@string/edit_ascii"
-        android:inputType="number"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/toCharButton"
-        app:layout_constraintTop_toBottomOf="@+id/charEditText" />
+        app:layout_constraintLeft_toRightOf="@+id/charTextInput"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBaseline_toBaselineOf="@+id/charTextInput"
+        app:layout_constraintHorizontal_bias="1.0" />
 
     <Button
         android:id="@+id/toCharButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginStart="16dp"
-        android:onClick="convertToChar"
+        android:onClick="convert"
         android:text="@string/button_toChar"
-        app:layout_constraintBaseline_toBaselineOf="@+id/asciiEditText"
-        app:layout_constraintLeft_toRightOf="@+id/asciiEditText"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/asciiTextInput"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/asciiTextInput" />
 
-    <Button
-        android:id="@+id/button"
-        style="@style/Widget.AppCompat.Button.Borderless"
+    <pw.wuqs.app.charcode.CTextInputLayout
+        android:id="@+id/charTextInput"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/toAsciiButton"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <EditText
+            android:id="@+id/charEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/edit_char"
+            android:imeOptions="actionGo"
+            android:inputType="textNoSuggestions"
+            android:maxLength="1"
+            android:selectAllOnFocus="true" />
+    </pw.wuqs.app.charcode.CTextInputLayout>
+
+    <pw.wuqs.app.charcode.CTextInputLayout
+        android:id="@+id/asciiTextInput"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/toCharButton"
+        app:layout_constraintTop_toBottomOf="@+id/charTextInput">
+
+        <EditText
+            android:id="@+id/asciiEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/edit_unicode"
+            android:imeOptions="actionGo"
+            android:inputType="number"
+            android:maxLength="10"
+            android:selectAllOnFocus="true" />
+    </pw.wuqs.app.charcode.CTextInputLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/mainRecyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginBottom="0dp"
-        android:layout_marginEnd="16dp"
         android:layout_marginLeft="0dp"
         android:layout_marginRight="0dp"
-        android:layout_marginStart="16dp"
-        android:onClick="sendMessage"
-        android:text="@string/button_show"
+        android:layout_marginTop="16dp"
+        android:clipToPadding="false"
+        android:paddingBottom="2dp"
+        android:paddingEnd="8dp"
+        android:paddingStart="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/asciiTextInput" />
 </android.support.constraint.ConstraintLayout>
