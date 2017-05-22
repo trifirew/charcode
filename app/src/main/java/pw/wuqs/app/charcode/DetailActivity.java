@@ -22,7 +22,6 @@ public class DetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
-        setTitle(R.string.char_detail);
 
         Intent intent = getIntent();
         int unicode = intent.getIntExtra(MainActivity.CHARCODE_KEY, 0);

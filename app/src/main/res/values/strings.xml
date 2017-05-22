@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">CharCode</string>
+    <string name="app_name" translatable="false">CharCode</string>
     <string name="button_send">To Unicode</string>
     <string name="button_toChar">To character</string>
     <string name="edit_char">Character</string>
@@ -17,4 +17,9 @@
     <string name="dec_unicode_abbr">Dec Unicode</string>
     <string name="hex_unicode_abbr">Hex Unicode</string>
     <string name="surrogate_pair">Surrogate pair</string>
+    <string name="label_about">About</string>
+    <string name="label_version">Version</string>
+    <string name="label_dev"><a href="https://github.com/trifirew">Trifire</a> 2017</string>
+    <string name="view_source"><a href="https://github.com/trifirew/charcode">View Source</a></string>
+    <string name="license"><u>Open source license</u></string>
 </resources>

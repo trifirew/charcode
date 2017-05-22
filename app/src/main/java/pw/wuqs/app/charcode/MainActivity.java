@@ -10,6 +10,8 @@ import android.text.Editable;
 import android.text.InputFilter;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
@@ -157,5 +159,21 @@ public class MainActivity extends AppCompatActivity {
             parsable = false;
         }
         return parsable;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.miAbout:
+                startActivity(new Intent(this, AboutActivity.class));
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

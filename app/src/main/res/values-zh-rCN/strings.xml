@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">字符编码</string>
     <string name="button_send">转换成ASCII码</string>
     <string name="button_toChar">转换成字符</string>
     <string name="edit_char">字符</string>
@@ -18,4 +17,9 @@
     <string name="dec_unicode_abbr">十进制 Unicode</string>
     <string name="hex_unicode_abbr">十六进制 Unicode</string>
     <string name="surrogate_pair">代理对</string>
+    <string name="label_about">关于</string>
+    <string name="label_version">版本</string>
+    <string name="label_dev"><a href="https://github.com/trifirew">三火</a> 2017</string>
+    <string name="view_source"><a href="https://github.com/trifirew/charcode">查看源代码</a></string>
+    <string name="license"><u>开放源代码许可</u></string>
 </resources>
