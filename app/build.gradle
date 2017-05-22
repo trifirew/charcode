@@ -1,14 +1,16 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+    }
     compileSdkVersion 25
     buildToolsVersion '25.0.3'
     defaultConfig {
         applicationId 'pw.wuqs.app.charcode'
         minSdkVersion 17
         targetSdkVersion 25
-        versionCode 7
-        versionName '0.5'
+        versionCode 8
+        versionName '0.5.2'
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {

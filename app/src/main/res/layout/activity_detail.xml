@@ -9,6 +9,22 @@
     tools:layout_editor_absoluteX="0dp"
     tools:layout_editor_absoluteY="81dp">
 
+    <ImageButton
+        android:id="@+id/cpSurrBtn"
+        style="@style/Widget.AppCompat.ImageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="@string/copy_hex_unicode"
+        android:onClick="copy"
+        app:srcCompat="?android:attr/actionModeCopyDrawable"
+        android:layout_marginRight="0dp"
+        app:layout_constraintRight_toRightOf="@+id/cpHexBtn"
+        app:layout_constraintTop_toTopOf="@+id/surrogateTV"
+        android:layout_marginTop="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/surrogateTV"
+        android:layout_marginBottom="0dp" />
+
     <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
@@ -28,7 +44,7 @@
         android:layout_marginLeft="0dp"
         android:layout_marginRight="0dp"
         android:layout_marginTop="0dp"
-        android:text="T"
+        android:text="@string/text_char"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Display3"
         android:textColor="@color/colorAccent"
@@ -50,28 +66,40 @@
         app:layout_constraintTop_toBottomOf="@+id/space3" />
 
     <TextView
+        android:id="@+id/surrLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/surrogate_pair"
+        android:textAppearance="@style/TextAppearance.AppCompat.Menu"
+        android:textSize="14sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+    <TextView
         android:id="@+id/decUnicodeTV"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="TextView"
-        app:layout_constraintBaseline_toBaselineOf="@+id/textView8"
-        app:layout_constraintLeft_toRightOf="@+id/textView8"
         android:layout_marginLeft="16dp"
-        app:layout_constraintRight_toLeftOf="@+id/cpDecBtn"
         android:layout_marginRight="8dp"
-        app:layout_constraintHorizontal_bias="0.0" />
+        android:layout_marginStart="16dp"
+        android:text="@string/dec_unicode_abbr"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textView8"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toRightOf="@+id/textView8"
+        app:layout_constraintRight_toLeftOf="@+id/cpDecBtn" />
 
     <TextView
         android:id="@+id/hexUnicodeTV"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        app:layout_constraintBaseline_toBaselineOf="@+id/textView6"
         android:layout_marginLeft="0dp"
+        android:layout_marginRight="8dp"
+        android:text="@string/hex_unicode_abbr"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textView6"
         app:layout_constraintLeft_toLeftOf="@+id/decUnicodeTV"
-        app:layout_constraintRight_toLeftOf="@+id/cpHexBtn"
-        android:layout_marginRight="8dp" />
+        app:layout_constraintRight_toLeftOf="@+id/cpHexBtn" />
 
     <Button
         android:id="@+id/cpCharBtn"
@@ -112,6 +140,7 @@
         android:layout_marginRight="0dp"
         android:layout_marginTop="0dp"
         android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="@string/copy_dec_unicode"
         android:onClick="copy"
         app:layout_constraintBottom_toBottomOf="@+id/decUnicodeTV"
         app:layout_constraintLeft_toRightOf="@id/decUnicodeTV"
@@ -126,12 +155,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="0dp"
-        android:layout_marginRight="0dp"
         android:layout_marginTop="0dp"
         android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="@string/copy_hex_unicode"
         android:onClick="copy"
         app:layout_constraintBottom_toBottomOf="@+id/hexUnicodeTV"
-        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@+id/hexUnicodeTV"
-        app:srcCompat="?android:attr/actionModeCopyDrawable" />
+        app:srcCompat="?android:attr/actionModeCopyDrawable"
+        app:layout_constraintVertical_bias="0.428"
+        android:layout_marginRight="0dp"
+        app:layout_constraintRight_toRightOf="@+id/cpDecBtn" />
+
+    <TextView
+        android:id="@+id/surrogateTV"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="8dp"
+        android:text="@string/surrogate_pair"
+        app:layout_constraintBaseline_toBaselineOf="@+id/surrLabel"
+        app:layout_constraintLeft_toLeftOf="@+id/hexUnicodeTV"
+        app:layout_constraintRight_toLeftOf="@+id/cpSurrBtn" />
 </android.support.constraint.ConstraintLayout>

@@ -14,4 +14,8 @@
     <string name="char_detail">字符详情</string>
     <string name="toast_copied">已复制：</string>
     <string name="invalid_unicode">无效的 Unicode 编码</string>
+    <string name="text_char">字符</string>
+    <string name="dec_unicode_abbr">十进制 Unicode</string>
+    <string name="hex_unicode_abbr">十六进制 Unicode</string>
+    <string name="surrogate_pair">代理对</string>
 </resources>

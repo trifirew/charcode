@@ -7,15 +7,16 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class DetailActivity extends AppCompatActivity {
 
-    CharCode charCode;
-    TextView chTV;
-    TextView decUnicodeTV;
-    TextView hexUnicodeTV;
+    private CharCode charCode;
+    private TextView chTV;
+    private TextView decUnicodeTV;
+    private TextView hexUnicodeTV;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +34,23 @@ public class DetailActivity extends AppCompatActivity {
         chTV.setText(charCode.getCharStr());
         decUnicodeTV.setText(charCode.getDecUnicodeStr());
         hexUnicodeTV.setText(charCode.getHexUnicodeStr());
+
+        // Surrogate pair view
+        TextView surrogateTV = (TextView) findViewById(R.id.surrogateTV);
+        TextView surrLabel = (TextView) findViewById(R.id.surrLabel);
+        ImageButton cpSurrBtn = (ImageButton) findViewById(R.id.cpSurrBtn);
+
+        if (charCode.isSurrogatePair()) {
+            surrLabel.setVisibility(View.VISIBLE);
+            surrogateTV.setVisibility(View.VISIBLE);
+            cpSurrBtn.setVisibility(View.VISIBLE);
+            surrogateTV.setText(charCode.getHexSurrogatePairStr());
+        } else {
+            surrLabel.setVisibility(View.GONE);
+            surrogateTV.setVisibility(View.GONE);
+            cpSurrBtn.setVisibility(View.GONE);
+        }
+
     }
 
     public void copy(View view) {
@@ -48,6 +66,9 @@ public class DetailActivity extends AppCompatActivity {
                 break;
             case R.id.cpHexBtn:
                 clipString = charCode.getHexUnicodeStr();
+                break;
+            case R.id.cpSurrBtn:
+                clipString = charCode.getHexSurrogatePairStr();
                 break;
             default:
                 clipString = null;

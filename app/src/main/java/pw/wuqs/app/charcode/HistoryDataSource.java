@@ -36,7 +36,7 @@ class HistoryDataSource {
         dbHelper.close();
     }
 
-    public CharCode insertHistory(CharCode charCode) {
+    public void insertHistory(CharCode charCode) {
         ContentValues values = new ContentValues();
         values.put(HistoryContract.HistoryEntry.COLUMN_NAME_ASCII, charCode.getUnicode());
 
@@ -51,7 +51,6 @@ class HistoryDataSource {
         cursor.moveToFirst();
         CharCode history = cursorToCharCode(cursor);
         cursor.close();
-        return history;
     }
 
     public CharCode getHistoryById(long id) {

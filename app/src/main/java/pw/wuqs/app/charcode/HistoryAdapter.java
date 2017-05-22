@@ -2,7 +2,6 @@ package pw.wuqs.app.charcode;
 
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +14,6 @@ import java.util.List;
  */
 
 public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.MyViewHolder> {
-    private static final String TAG = "MyAdapter";
     private List<CharCode> historyList;
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
@@ -44,7 +42,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.MyViewHo
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        Log.e(TAG, "set value");
+        // Set values
         holder.asciiTextView.setText(historyList.get(position).getDecUnicodeStr());
         holder.charTextView.setText(historyList.get(position).getCharStr());
         holder.cv.setTag(historyList.get(position));
