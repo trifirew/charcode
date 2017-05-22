@@ -21,5 +21,6 @@
     <string name="label_version">版本</string>
     <string name="label_dev"><a href="https://github.com/trifirew">三火</a> 2017</string>
     <string name="view_source"><a href="https://github.com/trifirew/charcode">查看源代码</a></string>
-    <string name="license"><u>开放源代码许可</u></string>
+    <string name="license_u"><u>开放源代码许可</u></string>
+    <string name="license">开放源代码许可</string>
 </resources>
