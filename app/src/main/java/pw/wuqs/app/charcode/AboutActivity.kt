@@ -15,8 +15,8 @@ class AboutActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_about)
 
+        // Show version name
         versionTextView.text = versionName()
-
         // Activate web links
         websiteTV.movementMethod = LinkMovementMethod.getInstance()
         sourceTV.movementMethod = LinkMovementMethod.getInstance()
