@@ -86,7 +86,6 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:autoText="false"
         android:onClick="showLicense"
         android:text="@string/license_u"
         android:textAllCaps="false"

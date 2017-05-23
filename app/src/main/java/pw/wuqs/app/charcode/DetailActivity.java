@@ -6,6 +6,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -13,6 +15,7 @@ import android.widget.Toast;
 
 public class DetailActivity extends AppCompatActivity {
 
+    private HistoryDataSource dataSource;
     private CharCode charCode;
     private TextView chTV;
     private TextView decUnicodeTV;
@@ -23,6 +26,11 @@ public class DetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
+        // Open database
+        dataSource = new HistoryDataSource(this);
+        dataSource.open();
+
+        // Get intent
         Intent intent = getIntent();
         int unicode = intent.getIntExtra(MainActivity.CHARCODE_KEY, 0);
         charCode = new CharCode(unicode);
@@ -78,5 +86,22 @@ public class DetailActivity extends AppCompatActivity {
             clipboard.setPrimaryClip(clip);
             Toast.makeText(this, getString(R.string.toast_copied) + clipString, Toast.LENGTH_SHORT).show();
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_detail, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.miDetailDelete:
+                dataSource.deleteHistory(charCode);
+                finish();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

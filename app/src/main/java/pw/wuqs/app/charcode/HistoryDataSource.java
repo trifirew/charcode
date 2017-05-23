@@ -40,6 +40,8 @@ class HistoryDataSource {
         ContentValues values = new ContentValues();
         values.put(HistoryContract.HistoryEntry.COLUMN_NAME_ASCII, charCode.getUnicode());
 
+        // Delete history with same character
+        deleteHistory(charCode);
         // Insert the new row, returning the primary key value of the new row
         long newRowId = database.insert(HistoryContract.HistoryEntry.TABLE_NAME, null, values);
         Cursor cursor = database.query(
@@ -51,6 +53,22 @@ class HistoryDataSource {
         cursor.moveToFirst();
         CharCode history = cursorToCharCode(cursor);
         cursor.close();
+    }
+
+    public void deleteHistory(CharCode charCode) {
+        int unicode = charCode.getUnicode();
+        database.delete(
+                HistoryContract.HistoryEntry.TABLE_NAME,
+                HistoryContract.HistoryEntry.COLUMN_NAME_ASCII + " = " + unicode,
+                null
+        );
+    }
+
+    public void deleteAllHistory() {
+        database.delete(
+                HistoryContract.HistoryEntry.TABLE_NAME,
+                null, null
+        );
     }
 
     public CharCode getHistoryById(long id) {
@@ -72,7 +90,7 @@ class HistoryDataSource {
         Cursor cursor = database.query(
                 HistoryContract.HistoryEntry.TABLE_NAME,
                 allColumns,
-                null, null, HistoryContract.HistoryEntry.COLUMN_NAME_ASCII, null, DESC
+                null, null, null, null, DESC
                 );
 
         cursor.moveToFirst();

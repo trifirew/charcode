@@ -3,6 +3,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:id="@+id/miMainClearHistory"
+        android:title="@string/clear_history" />
+    <item
         android:id="@+id/miAbout"
         android:title="@string/label_about"
         app:showAsAction="never" />

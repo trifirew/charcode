@@ -23,4 +23,7 @@
     <string name="view_source"><a href="https://github.com/trifirew/charcode">查看源代码</a></string>
     <string name="license_u"><u>开放源代码许可</u></string>
     <string name="license">开放源代码许可</string>
+    <string name="delete">删除</string>
+    <string name="clear_history">清空历史记录</string>
+    <string name="all_history_cleared">已清空历史记录</string>
 </resources>

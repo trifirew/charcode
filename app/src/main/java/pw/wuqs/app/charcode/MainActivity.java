@@ -2,6 +2,8 @@ package pw.wuqs.app.charcode;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.constraint.ConstraintLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -33,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
     private EditText charEditText;
     private EditText asciiEditText;
+    private ConstraintLayout constraintLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -137,18 +140,19 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, DetailActivity.class);
         intent.putExtra(CHARCODE_KEY, charCode.getUnicode());
         startActivity(intent);
-    }
-
-    @Override
-    protected void onPause() {
-        dataSource.close();
-        super.onPause();
+        clearInput();
     }
 
     @Override
     protected void onResume() {
-        dataSource.open();
+        updateHistory();
         super.onResume();
+    }
+
+    @Override
+    protected void onDestroy() {
+        dataSource.close();
+        super.onDestroy();
     }
 
     private boolean isParsable(String input){
@@ -159,6 +163,11 @@ public class MainActivity extends AppCompatActivity {
             parsable = false;
         }
         return parsable;
+    }
+
+    private void clearInput() {
+        asciiEditText.setText("");
+        charEditText.setText("");
     }
 
     @Override
@@ -172,6 +181,13 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.miAbout:
                 startActivity(new Intent(this, AboutActivity.class));
+                break;
+            case R.id.miMainClearHistory:
+                clearInput();
+                dataSource.deleteAllHistory();
+                updateHistory();
+                constraintLayout = (ConstraintLayout) findViewById(R.id.mainConstraintLayout);
+                Snackbar.make(constraintLayout, R.string.all_history_cleared, Snackbar.LENGTH_SHORT).show();
                 break;
         }
         return super.onOptionsItemSelected(item);
